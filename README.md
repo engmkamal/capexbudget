@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Demo 
 
-![image](https://github.com/engmkamal/capexbudget/upload/main/src/assets/CapexBudgetForm.png)
+![image](https://github.com/engmkamal/capexbudget/blob/main/src/assets/CapexBudgetForm.png)
 
 ## Development server
 
