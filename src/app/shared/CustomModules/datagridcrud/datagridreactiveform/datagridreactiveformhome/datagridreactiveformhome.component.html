@@ -1,0 +1,19 @@
+<p>datagridreactiveformhome works!</p>
+
+<!-- <ag-grid-angular 
+	style="width: 500px; height: 500px;" 
+	class="ag-theme-balham"
+	[rowData]="rowData" 
+	[columnDefs]="columnDefs"
+    [modules]="modules">
+</ag-grid-angular> -->
+
+<form [formGroup]="myForm">
+    <ag-grid-formcontrol
+            formControlName="myFormControl"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+    ></ag-grid-formcontrol>
+</form>
+
+<pre>{{value}}</pre>

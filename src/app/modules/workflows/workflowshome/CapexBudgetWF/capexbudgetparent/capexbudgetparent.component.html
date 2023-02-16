@@ -1,0 +1,343 @@
+
+<!-- <style>
+  .fix-this {
+    all: unset;
+  }
+</style> -->
+<style>
+    mat-form-field {
+      /* Changes the input styling to just about nothing so that button styling can take over */
+      font-size: 12px;
+      margin-top: -25px;
+      height: 55px;
+    }
+  
+    mat-select {
+      font-size: 12px;
+      margin-top: -25px;
+    }
+  
+    mat-form-field>input {
+      margin-top: -25px;
+    }
+  
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+      /* remove border if needed  */
+      /* color: transparent !important;  */
+      height: 32px;
+      margin-top: 8px;
+    }
+
+    .mFrmFld {
+        margin-top: -20px; 
+        color:Navy;
+        font-size: 12px;
+        height: 55px;
+    }
+  </style>
+  
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  
+    .div-outer-table {
+      overflow-x: scroll;
+      display: inline-grid;
+    }
+  </style>
+  
+  <style>
+    label {
+      color: Navy;
+      font-family: 'arial', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    }
+  </style>
+  
+  <style>
+    mat-form-field {
+      /* Changes the input styling to just about nothing so that button styling can take over */
+      font-size: 12px;
+      margin-top: -25px;
+      height: 55px;
+    }
+  
+    mat-select {
+      font-size: 12px;
+      margin-top: -25px;
+    }
+  
+    mat-form-field>input {
+      margin-top: -25px;
+    }
+  
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+      /* remove border if needed  */
+      /* color: transparent !important;  */
+      height: 32px;
+      margin-top: 8px;
+    }
+  </style>
+  
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  
+    .div-outer-table {
+      overflow-x: scroll;
+      display: inline-grid;
+    }
+  </style>
+  
+  <style>
+    label {
+      color: Navy;
+      font-family: 'arial', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    }
+  </style>
+  
+  
+  
+  <link href="https://unpkg.com/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+  
+  <div style="width: 100%; margin: auto;" class="fix-this panel">
+    <div style="width: 100%; background-color: #014AC5;">
+      <form [formGroup]="_form" (ngSubmit)="onSubmitBtn()">
+        <br/>
+        <h2 style="color: white; margin-left: 35px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+          CAPEX Budget Proposal <span *ngIf="uId != '' ">(Ref Id: {{reqRef}})</span>
+        </h2>
+        <br/>
+        <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+          <app-requestorhome [formGroup]="_form" [requestorsInfo]="requestorsInfo"></app-requestorhome>
+        </div>
+        <br> -->
+
+        <ng-container *ngIf = "displayEmpInfo">
+          <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+            <label><b><h3>Requestor:</h3></b></label>
+            <div *ngComponentOutlet="EmpInfoComponent; injector: empInfoInjector"></div>
+          </div>
+          <br>
+        </ng-container>
+
+        <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+            <app-datagridngrx *ngIf="loadDataGridComponent" [gridControlName]="datagridngrxName" [requestInfo]="requestInfo" ></app-datagridngrx>
+         
+          <br>
+
+        </div> -->
+        
+        <ng-container *ngIf="uId == '' ">
+          
+          <!-- <div fxFlex="1 1 100" fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="1 1 34">
+              <label><b>Excel Upload Template: </b></label>
+            </div>
+            <div fxFlex="1 1 34"> <a href="/Style%20Library/Images/ConveyanceExcelUploadTemplet.xlsx">Download Excel Template</a>
+          </div> 
+          
+          </div>-->
+
+          <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+            <p><label><b>Upload data with Excel sheet:</b></label></p>
+            <span><div> <a href="/Style%20Library/Images/ConveyanceExcelUploadTemplet.xlsx">Download Excel Template</a></span>
+          </div> -->
+
+         
+    
+    
+            <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+              <p>
+                <label><b>User Guide of Excel Upload Template:</b></label>
+                &nbsp;&nbsp;&nbsp;
+                <span><label><b><a href="https://portal.bergerbd.com/Style%20Library/Images/Description of each fields of CAPEX Budget Templet.pdf">Download User Guide of Excel Upload Template</a></b></label></span>
+              </p>
+              <p>
+                <label><b>Excel Upload Template:</b></label>
+                &nbsp;&nbsp;&nbsp;
+                <span><label><b><a href="https://portal.bergerbd.com/Style%20Library/Images/CapexBudgetTemplet.xlsx">Download Excel Template</a></b></label></span>
+              </p>   
+              <label><b>Upload data with Excel sheet:</b></label>
+                <app-exceluploadhome (excelDataLoaded)="excelDataLoadedInChild($event)" ></app-exceluploadhome>
+            </div> 
+            <br>           
+        </ng-container>
+        
+
+        
+
+
+        <ng-container>
+            <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" #datagridcrudDiv>
+              <label><b><h3>Proposal Item Details:</h3></b></label>  
+              <app-datagridcrudhome *ngIf="loadDataGridComponent" [gridControlName]="datagridcrudhomeName" [requestInfo]="requestInfo" (outputToParent)="GetOutputVal($event)" (gridData)="gridDataLoadedInChild($event)"></app-datagridcrudhome>
+                
+                <!-- <pre>Requestors Info: {{ requestorsInfo | json }}</pre> -->
+              <!-- <pre>{{ _form.value | json }}</pre> -->
+            </div>
+            <br>
+        </ng-container>
+
+        <!-- <ng-container *ngIf="deletedGridItems.GridColVal !== null && deletedGridItems.GridColVal.length > 0">
+          <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" #datagridcrudDiv>
+            <h3>Rejected Items:</h3>
+            <app-approvalhistorygrid [requestInfo]="deletedGridItems"></app-approvalhistorygrid>                        
+          </div>
+          <br>
+      </ng-container> -->
+      
+
+      <ng-container *ngIf = "displayRejectedItems">
+        <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+          <label><b><h3>Rejected Items:</h3></b></label>
+          <div *ngComponentOutlet="RejectedItemsComponent; injector: rejectedItmInjector"></div>
+        </div>
+        <br>
+      </ng-container>
+        
+      <ng-container *ngIf="Status != 'Completed' && Status != 'Rejected' ">
+        <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+          <label><b><h3>Attachments:</h3></b></label>
+            <app-attachmentprimenghome [formGroup]="_form" [gridControlName]="attachmentControlName" [requestInfo]="requestInfo" (outputToParent)="GetOutputVal($event)"></app-attachmentprimenghome>
+        </div>
+        <br>
+      </ng-container>  
+
+      <ng-container *ngIf = "displayAttachments">
+        <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+          <label><b><h3>Uploaded Attachments:</h3></b></label>
+          <div *ngComponentOutlet="DynamicComponent; injector: myInjector"></div>
+        </div>
+        <br>
+      </ng-container>
+
+        <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+            <app-vertical-grid *ngIf="loadDataGridComponent" [formGroup]="_form" [requestInfo]="requestInfo" ></app-vertical-grid>
+          <br>
+          <br>
+          <pre>{{ _form.value | json }}</pre>
+        </div> -->
+
+        <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;">
+            <app-horizontalgrid *ngIf="loadDataGridComponent" [gridControlName]="gridControlName" [requestInfo]="requestInfo" ></app-horizontalgrid>
+          <br>
+          <br>          
+          <p>_form.value| json :  from capexbudgetparent</p>
+            <pre>{{ _form.value | json }}</pre>
+        </div> -->
+
+
+        
+        <!-- <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" *ngIf="uId != ''">
+            <h3>Pending With: {{PendingWith}}</h3>
+            <app-approvalhistorygrid [requestInfo]="approvalHistory" *ngIf="approvalHistory.length > 0"></app-approvalhistorygrid>
+            <br>
+        </div> -->
+
+        <ng-container *ngIf = "uId != '' ">
+          <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+            <label><b><h3>Pending With: {{PendingWith}}</h3></b></label>
+            <label><b><h4>Approval History:</h4></b></label>
+            
+            <div *ngComponentOutlet="ApprovalLogComponent; injector: approvalLogInjector"></div>
+          </div>
+          <br>
+        </ng-container>
+
+        
+        <ng-container *ngIf=" Status != 'Completed' && Status != 'Rejected' ">
+          <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+              <app-commentfieldhome></app-commentfieldhome>
+              <!-- <pre>{{ _form.value.Comments | json }}</pre> -->
+          </div>
+          <br>
+        </ng-container>
+
+        <!-- <app-displayanyinfohome></app-displayanyinfohome> -->
+        <!-- <ng-container *ngComponentOutlet="DynamicComponent; injector: customInjector; content: contentList;"> -->
+          
+
+
+          <!-- <ng-container >
+            <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" >
+              
+                <div *ngComponentOutlet="DynamicComponent; injector: myInjector2">
+                
+              </div>
+            </div>
+            <br>
+          </ng-container> -->
+
+
+       
+        <!-- <pre>{{ _form.value | json }}</pre> -->
+        
+        <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px; display: flex;" *ngIf = " Status != 'Completed' && Status != 'Rejected' ">
+            <!-- <div fxLayout="row" fxFlex="1 1 100" ><p>Action Comments:</p></div>
+            
+            <div fxFlex="1 1 100" fxLayout="row">                
+                <div fxFlex="1 1 100">
+                      <mat-form-field fxFlex="100" class="mFrmFld">
+                         <textarea matInput cdkTextareaAutosize
+                            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" #sampleDescription
+                            maxlength="200" style="color:powderblue"></textarea>
+                         <mat-hint align="end">{{sampleDescription.value?.length || 0}}/200</mat-hint>
+                      </mat-form-field>
+                </div>
+             </div>
+
+             
+            <p></p> -->
+           
+
+          <div fxLayout="row" fxFlex="1 1 100" *ngIf = " uId == '' ">
+            <button mat-button type="submit" class="mat-raised-button mat-primary"
+                    (click)="approverAction('Submitted')" id="btnSubmitNewReq" *ngIf="uId == ''">Submit</button>
+          </div>
+
+          <div fxLayout="row" fxFlex="1 1 100" *ngIf = " (Status == 'SubmittedToITInfra' && readMode == '') || (Status == 'SubmittedToCCAI' && readMode == '') ">
+            <button mat-button type="button" class="mat-raised-button mat-primary"
+                    (click)="approverAction('Approved')" id="btnApprove" >Approve</button>
+                    &nbsp;&nbsp;
+            <button mat-button type="button" class="mat-raised-button mat-primary"
+                    (click)="approverAction('Change')" id="btnChange" >Change</button>
+                    &nbsp;&nbsp;
+            <button mat-button type="button" class="mat-raised-button mat-primary"
+                    (click)="approverAction('Reject')" id="btnReject" >Reject</button>
+
+          </div>
+
+          <div fxLayout="row" fxFlex="1 1 100" *ngIf = "uId != '' && (Status == 'CRITInfraToUser' || Status == 'CRCCAIToUser') ">
+            <button mat-button type="button" class="mat-raised-button mat-primary"
+                    (click)="clickSaveOrSubmit('ReSubmit')" id="btnReSubmit" >Re-Submit</button>
+
+          </div>
+        </div>
+      </form>
+      <br>
+
+      <!-- <ng-container>
+        <p>Multiple Attachment:</p>
+        <div style="background-color: whitesmoke; padding: 15px; margin-left: 15px; margin-right: 15px;" *ngIf="uId == '' ">
+            <p>Attachments:</p>
+            <app-multipleattachmentsupload></app-multipleattachmentsupload>
+        </div>
+        <br>
+      </ng-container> -->
+
+
+
+    <!-- <div>
+      
+    </div> -->
+    </div>
+  </div>
+
+  
+

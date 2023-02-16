@@ -1,0 +1,21 @@
+<p>vertical-grid works!</p>
+<br />
+
+<input type="text"
+       [(ngModel)]="name"> <button (click)="addNewName()">Add</button> <button (click)="deleteName()">Delete</button>
+       <br/>
+       <br/>
+       <br/>
+<ag-grid-angular style="width: 60%; height: 300px;"
+                 class="ag-theme-material"
+                 [enableColResize]="true"
+                 [context]="getContext()"
+                 [frameworkComponents]="frameworkComponents"
+                 [suppressMovableColumns]="true"
+                 [rowData]="rowData"
+                 [columnDefs]="columnDefs"
+                 (gridReady)="gridReady($event)">
+
+</ag-grid-angular>
+
+<pre>{{ form.value | json }} </pre>

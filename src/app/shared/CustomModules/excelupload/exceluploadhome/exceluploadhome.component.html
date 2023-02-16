@@ -1,0 +1,28 @@
+
+<ng-container *ngIf="controlContainer.control" [formGroup]="controlContainer.control">    
+    <!-- <ng-container *ngIf="controlContainer.control" [formGroup]="controlContainer.control"> -->
+
+    <div class="fix-this">
+
+        <input type="file" (change)="onChange($event)" #inputFile> 
+        <!-- <button (click)="removeData()">Remove Data</button> -->
+        <div *ngIf="isExcelFile === false">
+        This is not an Excel file
+        </div>
+        <span *ngIf="spinnerEnabled" class="k-i-loading k-icon"></span>
+        <!-- <div style="width: 99%;" >
+            <table style="width: 99%; overflow-x: scroll;">
+                <th *ngFor="let key of keys">
+                {{key}}
+                </th>
+                <tr *ngFor="let item of dataSheet | async">
+                <td *ngFor="let key of keys">
+                    {{item[key]}}
+                </td>
+                </tr> 
+                </table>
+        </div> -->
+        
+        <br>
+    </div>
+</ng-container>

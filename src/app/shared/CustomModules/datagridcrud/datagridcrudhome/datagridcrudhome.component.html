@@ -1,0 +1,146 @@
+<script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+<ng-container *ngIf="controlContainer.control" [formGroup]="controlContainer.control">
+    <div class="fix-this">
+
+        <!-- <input type="file" (change)="onChange($event)" #inputFile> <button (click)="removeData()">Remove Data</button>
+        <div *ngIf="isExcelFile === false">
+        This is not an Excel file
+        </div>
+        <span *ngIf="spinnerEnabled" class="k-i-loading k-icon"></span>
+        <div style="width: 99%;" *ngIf="renderExcelItems">
+            <table style="width: 99%; overflow-x: scroll;">
+                <th *ngFor="let key of keys">
+                {{key}}
+                </th>
+                <tr *ngFor="let item of dataSheet | async">
+                <td *ngFor="let key of keys">
+                    {{item[key]}}
+                </td>
+                </tr> 
+                </table>
+        </div>       
+        <br>-->
+
+        
+            <!-- <legend>
+                <span>Budget Proposal Data:</span>
+            </legend> -->
+            <br>
+            <div *ngIf="requestInfo.uId != '' && requestInfo.Status != 'Completed' && requestInfo.Status != 'Rejected' && requestInfo.readMode == ''">
+                <button (click)="addRowData()">Append row</button>
+                <button (click)="removeRowData()">Delete selected row</button>
+                <!-- <button (click)="updateOddRowData()">Update odd rows</button>
+                <button (click)="updateEvenRowData()">Update even rows</button> -->
+                <!-- <button (click)="resetRowData()">Reset rows</button> -->
+            </div>
+            
+            <br>
+            <!-- <div class="panel-content" *ngIf="renderExcelItems"> 
+                <ag-grid-angular
+                style="width: 99%; height: 450px; margin-left:5px;"
+                class="ag-theme-alpine"
+                [modules]="modules"
+                [defaultColDef]="mpTG.defaultColDef"
+                [columnDefs]="mpTG.columnDefs"                
+                [rowData]="rowData"
+                pagination
+                paginationPageSize="1000"
+                [rowHeight]="rowHeight"
+                (gridReady)="onGridReady($event)"
+                (rowEditingStopped)="onRowEditingStopped($event)"
+                (rowEditingStarted)="onRowEditingStarted($event)"
+                editType="fullRow"
+                [suppressClickEdit]="true"
+                [context]="getContext()"
+                [frameworkComponents]="getComponents()"
+                            [getRowNodeId]="getRowNodeId"
+                            (rowDataChanged)="refreshFormControls()"
+                            suppressColumnVirtualisation=true
+                            suppressMaxRenderedRowRestriction=true
+                            rowBuffer=10000
+                            [rowSelection]="rowSelection"                      
+                ></ag-grid-angular>               
+             </div> -->
+
+             <div class="panel-content" *ngIf="renderExcelItems"> 
+                <ag-grid-angular
+                style="width: 99%; height: 450px; margin-left:5px;"
+                class="ag-theme-alpine"
+                [defaultColDef]="mpTG.defaultColDef"
+                [columnDefs]="mpTG.columnDefs"                
+                [rowData]="rowData"
+                [rowHeight]="rowHeight"
+                (gridReady)="onGridReady($event)"
+                pagination
+                paginationPageSize="1000" 
+                [context]="getContext()"
+                [getRowNodeId]="getRowNodeId"
+                (rowDataChanged)="refreshFormControls()"
+                [frameworkComponents]="mpTG.frameworkComponents"
+                suppressColumnVirtualisation=true
+                suppressMaxRenderedRowRestriction=true
+                rowBuffer=10000
+                [rowSelection]="rowSelection"
+                [editType]="editType"
+                (rowEditingStopped)="onRowEditingStopped($event)"
+                (rowEditingStarted)="onRowEditingStarted($event)"
+                (cellClicked)="onCellClicked($event)"
+                (cellValueChanged)="onCellValueChanged($event)"
+                (rowValueChanged)="onRowValueChanged($event)"                         
+                ></ag-grid-angular>               
+             </div>
+             <!-- <pre>{{ formGroup.value | json }}</pre> -->
+             <!-- [frameworkComponents]="getComponents()"
+             [getRowNodeId]="getRowNodeId"
+             (rowDataChanged)="refreshFormControls()"
+             [rowSelection]="'single'"
+            rowModelType="viewport" -->
+
+             <!-- <div class="panel-content"> 
+                <ag-grid-angular
+                style="width: 99%; height: 450px; margin-left:5px;"
+                class="ag-theme-alpine"
+                [columnDefs]="mpTG.columnDefs"
+                [defaultColDef]="mpTG.defaultColDef"
+                [rowData]="rowData"
+                pagination
+                paginationPageSize="1000"
+                [rowHeight]="rowHeight"
+                [enableRangeSelection]="true"
+                [animateRows]="true"
+                (gridReady)="onGridReady($event)"
+                (rowEditingStopped)="onRowEditingStopped($event)"
+                (rowEditingStarted)="onRowEditingStarted($event)"
+                (cellClicked)="onCellClicked($event)"
+                editType="fullRow"
+                [suppressClickEdit]="true"
+                [context]="getContext()"
+                ></ag-grid-angular>               
+             </div> -->
+
+             <!-- <ng-container [formGroup]="controlContainer.control">
+                <div class="container"
+                    fxLayout="column"
+                    fxLayoutAlign="start center">
+                        <ag-grid-angular style="width: 700px; height: 300px;"
+                                        class="ag-theme-material"
+                                        [rowData]="rowData"
+                                        [columnDefs]="columnDefs"
+                                        [frameworkComponents]="getComponents()"
+                                        [context]="getContext()"
+                                        [getRowNodeId]="getRowNodeId"
+                                        (rowDataChanged)="refreshFormControls()"
+                                        (gridReady)="gridReady($event)">
+                        </ag-grid-angular>
+                </div>            
+            </ng-container> -->
+        
+    </div>
+</ng-container>
+
+<!-- <p>This is the Data Grid Home Componet. And its working fine !!!!</p> -->
+
+
+

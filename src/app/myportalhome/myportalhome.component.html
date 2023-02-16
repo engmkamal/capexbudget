@@ -1,0 +1,63 @@
+<style>
+    .parent {        
+        height: 90px;
+        width: 180px;
+        background-color: #2cb78a;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .child {
+        text-align: center;
+        color:white;
+        font-weight:bolder;
+    }
+</style>
+
+
+<div style="width:100℅; display:flex; flex-wrap: wrap; margin: auto;">
+    <div>
+        <a href="{{webAbsoluteUrl}}/home.aspx/pg">
+            <!-- <a href="http://localhost:4200/home/pg"> -->
+            <div class="parent" style="background-color: #18A6D9;" >
+                <h4 class="child" >Pages</h4>
+                <span class="count"></span>
+            </div>
+        </a>
+    </div>
+    <div>
+        <!-- <a href="{{webAbsoluteUrl}}/home.aspx/wf"> -->
+        <a href="http://localhost:4200/wf">
+            <div class="parent" style="background-color: #9252E3;">
+                <h4 class="child" style="text-align: center;">Workflows</h4>
+                <div id="ITAsset_COUNT" class="count"></div>
+                <span class="count"></span>
+            </div>
+        </a>
+    </div>
+    
+    <div>
+        <a href="{{webAbsoluteUrl}}/home.aspx/db">
+        <!-- <a href="https://portaldv.bergerbd.com/home.aspx/db"> -->
+            <div class="parent" style="background-color: #2cb78a;">
+                <h4 class="child">Dashboards</h4>
+                <span class="count"></span>
+            </div>
+        </a>
+    </div>
+    
+    <div>
+        <a href="{{webAbsoluteUrl}}/home.aspx">
+        <!-- <a href="http://localhost:4200/"> -->
+            <div class="parent" style="background-color: #078B26;">
+                <h4 class="child">Home</h4>            
+                <span class="count"></span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+
+

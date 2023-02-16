@@ -1,0 +1,55 @@
+<ng-container [formGroup]="controlContainer.control">
+    <div class="container"
+        fxLayout="column"
+        fxLayoutAlign="start center">
+            <ag-grid-angular style="width: 700px; height: 300px;"
+                            class="ag-theme-material"
+                            [rowData]="rowData"
+                            [defaultColDef]="defaultColDef"
+                            [columnDefs]="columnDefs"
+                            [frameworkComponents]="getComponents()"
+                            [context]="getContext()"
+                            [getRowNodeId]="getRowNodeId"
+                            (rowDataChanged)="refreshFormControls()"
+                            (gridReady)="gridReady($event)"
+                            (rowEditingStopped)="onRowEditingStopped($event)"
+                (rowEditingStarted)="onRowEditingStarted($event)"
+                (cellClicked)="onCellClicked($event)"
+                editType="fullRow"
+                [suppressClickEdit]="true">
+                            
+            </ag-grid-angular>
+    </div>
+
+    <!-- <pre>{{ gridForm.value | json }}</pre> -->
+
+</ng-container>
+
+<!-- <div class="container"
+     fxLayout="column"
+     fxLayoutAlign="start center">
+    <form class="dealership-form"
+          fxLayout="column"
+          fxLayoutAlign="start center"
+          (ngSubmit)="onSubmit()"
+          [formGroup]="gridForm">
+        <ag-grid-angular style="width: 700px; height: 300px;"
+                         class="ag-theme-material"
+                         [rowData]="rowData"
+                         [columnDefs]="columnDefs"
+                         [frameworkComponents]="getComponents()"
+                         [context]="getContext()"
+                         [getRowNodeId]="getRowNodeId"
+                         (rowDataChanged)="refreshFormControls()"
+                         (gridReady)="gridReady($event)">
+        </ag-grid-angular>
+        <button style="margin-top: 10px; float: right;"
+                mat-raised-button
+                [disabled]="!gridForm.valid"
+                type="submit">
+            Submit
+        </button>
+    </form>
+</div>
+
+<pre>{{ gridForm.value | json }}</pre> -->

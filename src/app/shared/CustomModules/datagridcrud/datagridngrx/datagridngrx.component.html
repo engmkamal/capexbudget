@@ -1,0 +1,23 @@
+<!-- <ng-container [formGroup]="controlContainer.control"> -->
+    <ag-grid-angular style="width: 100%; height: 150px" class="ag-theme-balham" #grid
+    [gridOptions]="gridOptions"
+    [columnDefs]="colDefs"
+    [rowData]="form.controls"
+    ></ag-grid-angular>
+
+    <button (click)="edit()">Edit Cell via API</button>
+
+    <h4>Form Value:</h4>
+    <pre>
+    {{ form.value | json }}
+    {{ form.controls | json }}
+    </pre>
+
+<!-- </ng-container> -->
+
+<!-- <ag-grid-angular style="width: 100%; height: 150px" class="ag-theme-balham" #grid
+    [gridOptions]="gridOptions"
+    [columnDefs]="colDefs"
+    [rowData]="form.controls"
+    [context]="getContext()"
+    ></ag-grid-angular> -->
